@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show
     if @user
       set_posts(@user.id)
-      render 'users/mypage' if @user == current_user
+      render "users/mypage" if @user == current_user
     end
   end
 
@@ -31,13 +31,12 @@ class UsersController < ApplicationController
   end
 
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  def set_posts(users)
-    posts = Book.where(user: users) + Report.where(user: users)
-    @posts = posts.sort_by { |post| post[:updated_at] }.reverse
-  end
+    def set_posts(users)
+      posts = Book.where(user: users) + Report.where(user: users)
+      @posts = posts.sort_by { |post| post[:updated_at] }.reverse
+    end
 end

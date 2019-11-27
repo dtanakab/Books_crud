@@ -6,6 +6,8 @@ ja:
       user: ユーザー
       comment: コメント
       report: レポート
+    models:
+      book: 本
     attributes:
       book:
         title: 本のタイトル
@@ -187,6 +189,8 @@ ja:
       login_omni: "%{omni}でログイン"
       account_info: "%{username}アカウント情報"
       account_index: "%{terms}ユーザー一覧"
+      New Book: 新規登録
+      Back: 戻る
     submit:
       create: 登録する
       submit: 保存する

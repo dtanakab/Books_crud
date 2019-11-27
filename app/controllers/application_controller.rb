@@ -7,18 +7,16 @@ class ApplicationController < ActionController::Base
   skip_before_action :login_required, if: :devise_controller?
 
   protected
-
-  def configure_permitted_parameters
-    added_attrs = %i[username postcode address postcode introduction image]
-    devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
-    devise_parameter_sanitizer.permit(:sign_in, keys: added_attrs)
-  end
-
-  def login_required
-    unless user_signed_in?
-      flash[:notice] = t('messages.login_needed')
-      redirect_to new_user_session_path
+    def configure_permitted_parameters
+      added_attrs = %i[username postcode address postcode introduction image]
+      devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
+      devise_parameter_sanitizer.permit(:sign_in, keys: added_attrs)
     end
-  end
 
+    def login_required
+      unless user_signed_in?
+        flash[:notice] = t("messages.login_needed")
+        redirect_to new_user_session_path
+      end
+    end
 end
