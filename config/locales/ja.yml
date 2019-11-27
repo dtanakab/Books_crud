@@ -4,11 +4,10 @@ ja:
     models:
       book: 本
       user: ユーザー
-<<<<<<< HEAD
       comment: コメント
       report: レポート
-=======
->>>>>>> 6331066... Modify some files
+    models:
+      book: 本
     attributes:
       book:
         title: 本のタイトル
@@ -22,7 +21,6 @@ ja:
         email: メールアドレス
         postcode: 郵便番号
         address: 住所
-<<<<<<< HEAD
         password: パスワード
         password_confirmation: パスワード(再確認のため)
       comment:
@@ -32,10 +30,6 @@ ja:
         content : レポート内容
         updated_at: 投稿/更新日時
         created_at: 投稿/更新日時
-=======
-        image: アイコン画像
-        introduction: 自己紹介
->>>>>>> 6331066... Modify some files
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -180,12 +174,8 @@ ja:
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
     select:
-<<<<<<< HEAD
       app_title: Rails練習用アプリ
       back_to: "%{page}に戻る"
-=======
-      back_to_top: トップページに戻る
->>>>>>> 6331066... Modify some files
       prompt: 選択してください
       Show: 詳細
       Edit: 編集
@@ -194,17 +184,13 @@ ja:
       Back: 戻る
       logout: ログアウト
       login: ログイン
-<<<<<<< HEAD
       signup: ユーザー登録
       signup_omni: "%{omni}でユーザー登録"
       login_omni: "%{omni}でログイン"
       account_info: "%{username}アカウント情報"
       account_index: "%{terms}ユーザー一覧"
-=======
-      signup: 会員登録
-      account_info: 会員登録情報
-      account_index: 会員一覧
->>>>>>> 6331066... Modify some files
+      New Book: 新規登録
+      Back: 戻る
     submit:
       create: 登録する
       submit: 保存する
@@ -216,15 +202,12 @@ ja:
       Memo: メモ
       Author: 著者
       Picture: 画像
-<<<<<<< HEAD
       impressions_of_book: "「%{book}」の感想"
       report_title: レポート：%{title}
       list_of_posts: 投稿一覧
       followers_count: フォロワー数：%{num}
       following_count: フォロー数：%{num}
       category: カテゴリ
-=======
->>>>>>> 6331066... Modify some files
     user_column:
       username: ユーザーネーム
       mail: メールアドレス
@@ -234,10 +217,7 @@ ja:
       password: パスワード
       password_again: パスワード（確認のため）
       remember?: 次回以降メールアドレスとパスワードを記憶する
-<<<<<<< HEAD
       iconimage: アイコン画像
-=======
->>>>>>> 6331066... Modify some files
   number:
     currency:
       format:
@@ -311,12 +291,9 @@ ja:
     no_user: 指定のユーザーは存在しません
     no_posts: まだ投稿がありません
     github_login: Githubでの会員登録・ログインが完了しました
-<<<<<<< HEAD
     size_too_big: ファイルのサイズが大きすぎます
     not_image: 画像ファイルを指定してください
     not_saved: があります。以下をご確認ください
-=======
->>>>>>> 6331066... Modify some files
   views:
     pagination:
       first: "&laquo; 最初"
