@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%= t('helpers.column.Title') %>:</strong>
   <%= @book.title %>
 </p>
 
 <p>
-  <strong>Memo:</strong>
+  <strong><%= t('helpers.column.Memo') %>:</strong>
   <%= @book.memo %>
 </p>
 
 <p>
-  <strong>Author:</strong>
+  <strong><%= t('helpers.column.Author') %>:</strong>
   <%= @book.author %>
 </p>
 
 <p>
-  <strong>Picture</strong>
+  <strong><%= t('helpers.column.Picture') %></strong>
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<%= link_to t('helpers.select.Edit'), edit_book_path(@book) %> |
+<%= link_to t('helpers.select.Back'), books_path %>
