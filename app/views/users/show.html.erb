@@ -1,0 +1,30 @@
+<%= link_to t('helpers.select.back_to_top'), books_path %>
+<% if @user %>
+  <p>
+    <strong><%= t('helpers.user_column.username') %>:</strong>
+    <%= @user.username %>
+  </p>
+
+  <p>
+    <strong><%= t('helpers.user_column.mail') %>:</strong>
+    <%= @user.email %>
+  </p>
+
+  <p>
+    <strong><%= t('helpers.user_column.postcode') %>:</strong>
+    <%= @user.postcode %>
+  </p>
+
+  <p>
+    <strong><%= t('helpers.user_column.address') %>:</strong>
+    <%= @user.address %>
+  </p>
+
+  <p>
+    <strong><%= t('helpers.user_column.introduction') %>：</strong>
+    <%= @user.introduction %>
+  </p>
+  <%= link_to t('helpers.select.logout'), destroy_user_session_path, method: :delete %>
+<% else %>
+  <p><%= t('messages.no_user') %></p>
+<% end %>
