@@ -243,6 +243,7 @@ ja:
     login_needed: ログインが必要です
     userself_only: ユーザー本人のみ確認できます
     no_user: 指定のユーザーは存在しません
+    github_login: Githubでの会員登録・ログインが完了しました
   views:
     pagination:
       first: "&laquo; 最初"
@@ -250,3 +251,8 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+  devise:
+    sessions:
+      user: 
+        signed_out: ログアウトできました
+

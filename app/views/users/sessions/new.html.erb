@@ -1,6 +1,7 @@
 <h2><%= t('helpers.select.login') %></h2>
 
 <%= link_to t('helpers.select.back_to_top'), books_path %>
+<%= link_to 'Githubでログイン', user_github_omniauth_authorize_path %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label t('helpers.user_column.mail') %><br />
