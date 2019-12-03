@@ -6,6 +6,11 @@
   </p>
 
   <p>
+    <strong><%= t('helpers.user_column.iconimage') %>:</strong>
+    <%= image_tag @user.image, :size =>'150x150' if @user.image.attached? %>
+  </p>
+
+  <p>
     <strong><%= t('helpers.user_column.mail') %>:</strong>
     <%= @user.email %>
   </p>
