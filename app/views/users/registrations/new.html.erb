@@ -31,6 +31,11 @@
   </div>
 
   <div class="field">
+    <%= f.label t('helpers.user_column.iconimage') %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
     <%= f.label t('helpers.user_column.password') %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
