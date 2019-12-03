@@ -1,44 +1,54 @@
-<h2><%= t('helpers.select.signup') %></h2>
+<p id="notice"><%= flash[:notice] %></p>
+<h1><%= t('helpers.select.signup') %></h1>
 
-<%= link_to t('helpers.select.back_to_top'), books_path %>
+<%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %> |
+<%= link_to t('helpers.select.signup_omni', omni: "Github"), user_github_omniauth_authorize_path %> |
+<%= render "users/shared/links" %>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <br><hr>
   <div class="field">
-    <%= f.label t('helpers.user_column.username') %><br />
+    <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label t('helpers.user_column.mail') %><br />
+    <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label t('helpers.user_column.postcode') %><br />
+    <%= f.label :postcode %><br />
     <%= f.text_field :postcode, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label t('helpers.user_column.address') %><br />
+    <%= f.label :address %><br />
     <%= f.text_area :address, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label t('helpers.user_column.introduction') %><br />
+    <%= f.label :introduction %><br />
     <%= f.text_area :introduction, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label t('helpers.user_column.password') %>
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %>文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label t('helpers.user_column.password_again') %><br />
+    <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
@@ -46,5 +56,3 @@
     <%= f.submit t('helpers.select.signup') %>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

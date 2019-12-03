@@ -1,14 +1,18 @@
-<h2><%= t('helpers.select.login') %></h2>
+<p id="notice"><%= flash[:notice] %></p>
+<h1><%= t('helpers.select.login') %></h1>
 
-<%= link_to t('helpers.select.back_to_top'), books_path %>
+<%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %> |
+<%= link_to t('helpers.select.login_omni', omni: "Github"), user_github_omniauth_authorize_path %> |
+<%= render "users/shared/links" %>
+<br><hr>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label t('helpers.user_column.mail') %><br />
+    <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label t('helpers.user_column.password') %><br />
+    <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -16,5 +20,3 @@
     <%= f.submit t('helpers.select.login') %>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

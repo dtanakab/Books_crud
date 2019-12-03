@@ -1,0 +1,7 @@
+<h1>
+  <%= t('helpers.select.account_index', terms: "#{@user.username}のフォロワー") %>
+</h1><br>
+<%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %>
+<%= link_to t('helpers.select.back_to', page: "アカウントページ"), user_path(params[:id]) %>
+<hr>
+<%= render 'users/shared/table', users: @followers %>

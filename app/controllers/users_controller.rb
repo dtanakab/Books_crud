@@ -1,12 +1,42 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :require_login
-  before_action :identity_verification, only: [:show]
+  before_action :set_user, only: %i[show following followers reports]
 
   def index
-    @users = User.page(params[:page])
+    @users = User.all
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    if @user
+      set_posts(@user.id)
+      render "users/mypage" if @user == current_user
+    end
   end
+
+  def following
+    @following = @user.following
+  end
+
+  def followers
+    @followers = @user.followers
+  end
+
+  def reports
+    @reports = @user.reports
+  end
+
+  def top
+    set_posts(current_user.following)
+  end
+
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def set_posts(users)
+      posts = Book.where(user: users) + Report.where(user: users)
+      @posts = posts.sort_by { |post| post[:updated_at] }.reverse
+    end
 end
