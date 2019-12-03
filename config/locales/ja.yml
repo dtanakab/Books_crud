@@ -1,12 +1,5 @@
 ---
 ja:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
   date:
     abbr_day_names:
     - 日
@@ -109,6 +102,11 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
+      not_saved: 適切なサイズ(約1MB未満)の画像ファイルを設定してください
+      record_invalid: 'バリデーションに失敗しました: %{errors}'
+      restrict_dependent_destroy:
+      has_one: "%{record}が存在しているので削除できません"
+      has_many: "%{record}が存在しているので削除できません"
       accepted: を受諾してください
       blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません
@@ -172,6 +170,7 @@ ja:
       password: パスワード
       password_again: パスワード（確認のため）
       remember?: 次回以降メールアドレスとパスワードを記憶する
+      iconimage: アイコン画像
   number:
     currency:
       format:
@@ -244,6 +243,8 @@ ja:
     userself_only: ユーザー本人のみ確認できます
     no_user: 指定のユーザーは存在しません
     github_login: Githubでの会員登録・ログインが完了しました
+    size_too_big: ファイルのサイズが大きすぎます
+    not_image: 画像ファイルを指定してください
   views:
     pagination:
       first: "&laquo; 最初"
@@ -255,4 +256,3 @@ ja:
     sessions:
       user: 
         signed_out: ログアウトできました
-
