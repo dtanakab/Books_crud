@@ -4,15 +4,24 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
-    @books = Book.page(params[:page])
+    if user_signed_in?
+      @users = current_user.following
+      @books = []
+      @users.each do |user|
+        @books += user.books
+      end
+      @books.sort! do |aa, bb|
+        bb.updated_at <=> aa.updated_at
+      end
+    end
   end
 
   def new
-    @book = Book.new
+    @book = current_user.books.build
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.build(book_params)
     if @book.save
       redirect_to @book, notice: t('messages.created')
     else
