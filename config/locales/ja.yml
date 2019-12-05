@@ -1,6 +1,14 @@
 ---
 ja:
   activerecord:
+    models:
+      book: 本
+    attributes:
+      book:
+        title: 本のタイトル
+        memo: メモ
+        picture: 画像
+        author: 著者
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -255,4 +263,3 @@ ja:
     sessions:
       user: 
         signed_out: ログアウトできました
-
