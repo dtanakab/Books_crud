@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
-  private
-
   protected
 
   def configure_permitted_parameters

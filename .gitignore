@@ -63,13 +63,3 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore uploaded files in development
-/storage/*
-!/storage/.keep
-test
-.gitignore
-app/assets/stylesheets
-app/views/kaminari
-app/views/users/confirmations
-app/views/users/mailer
-app/views/users/passwords
-app/views/users/registrations/edit.html.erb

@@ -1,21 +1,2 @@
 <%= link_to t('helpers.select.back_to_top'), books_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= t('helpers.user_column.iconimage') %></th>
-      <th><%= t('helpers.user_column.username') %></th>
-      <th><%= t('helpers.user_column.introduction') %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= image_tag user.image, :size =>'50x50' if user.image.attached? %></td>
-        <td><%= user.username %></td>
-        <td><%= user.introduction %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @users %>
+<%= render 'table', users: @users %>
