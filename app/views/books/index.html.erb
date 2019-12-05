@@ -1,21 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t('helpers.column.Books') %></h1><br>
-<% if user_signed_in? %>
-  <%= link_to t('helpers.select.account_info'), user_path(current_user.id) %>
-  <%= link_to t('helpers.select.account_index'), users_path %>
-  <%= link_to t('helpers.select.logout'), destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to t('helpers.select.signup'), new_user_registration_path %>
-  <%= link_to t('helpers.select.login'), new_user_session_path %>
-<% end %>
+<h1><%= t('helpers.column.Books') %></h1>
+
 <table>
   <thead>
     <tr>
-      <th><%= t('helpers.column.Title') %></th>
-      <th><%= t('helpers.column.Memo') %></th>
-      <th><%= t('helpers.column.Author') %></th>
-      <th colspan="3"></th>
+      <th><%= Book.human_attribute_name(:title) %></th>
+      <th><%= Book.human_attribute_name(:memo) %></th>
+      <th><%= Book.human_attribute_name(:author) %></th>
+      <th><%= Book.human_attribute_name(:picture) %></th>
     </tr>
   </thead>
 
@@ -25,7 +18,7 @@
         <td><%= book.title %></td>
         <td><%= book.memo %></td>
         <td><%= book.author %></td>
-        <td><%= book.picture %></td>
+        <td><%= image_tag(book.picture_url, size:'50x50') if book.picture.present? %></td>
         <td><%= link_to t('helpers.select.Show'), book %></td>
         <td><%= link_to t('helpers.select.Edit'), edit_book_path(book) %></td>
         <td><%= link_to t('helpers.select.Destroy'), book, method: :delete, data: { confirm: t('messages.sure?') } %></td>
@@ -33,7 +26,5 @@
     <% end %>
   </tbody>
 </table>
+
 <br>
-<br>
-<%= paginate @books %>
-<%= link_to t('helpers.select.New Book'), new_book_path %><br><br>

@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th><%= Book.human_attribute_name(:title) %></th>
+      <th><%= Book.human_attribute_name(:memo) %></th>
+      <th><%= Book.human_attribute_name(:author) %></th>
+      <th><%= Book.human_attribute_name(:picture) %></th>
+      <% unless params[:id] %>
+        <th><%= User.human_attribute_name(:username) %></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.memo %></td>
+        <td><%= book.author %></td>
+        <td><%= image_tag book.picture_url, :size => '50x50' if book.picture_url.present? %></td>
+        <% unless params[:id] %>
+          <td><%= link_to User.find(book.user_id).username, user_path(book.user_id) %></td>
+        <% end %>
+        <td><%= link_to t('helpers.select.Show'), book %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
