@@ -25,7 +25,7 @@
         <td><%= book.title %></td>
         <td><%= book.memo %></td>
         <td><%= book.author %></td>
-        <td><%= image_tag @book.picture_url, size:'50x50' if @book.picture.present? %></td>
+        <td><%= image_tag book.picture_url, size:'50x50' if book.picture.present? %></td>
         <td><%= link_to t('helpers.select.Show'), book %></td>
         <td><%= link_to t('helpers.select.Edit'), edit_book_path(book) %></td>
         <td><%= link_to t('helpers.select.Destroy'), book, method: :delete, data: { confirm: t('messages.sure?') } %></td>
