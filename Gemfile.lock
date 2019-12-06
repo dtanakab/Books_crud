@@ -289,13 +289,9 @@ DEPENDENCIES
   kaminari
   kaminari-bootstrap
   listen (>= 3.0.5, < 3.2)
-<<<<<<< HEAD
   omniauth
   omniauth-github
-  puma (~> 4.1)
-=======
   puma (~> 4.3)
->>>>>>> master
   rails (~> 6.0.1)
   rubocop
   sass-rails (>= 6)
