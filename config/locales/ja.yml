@@ -3,12 +3,20 @@ ja:
   activerecord:
     models:
       book: 本
+      user: ユーザー
     attributes:
       book:
         title: 本のタイトル
         memo: メモ
         picture: 画像
         author: 著者
+      user:
+        username: ユーザーネーム
+        email: メールアドレス
+        postcode: 郵便番号
+        address: 住所
+        image: アイコン画像
+        introduction: 自己紹介
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
