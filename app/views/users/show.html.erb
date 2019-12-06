@@ -1,64 +1,41 @@
 <%= link_to t('helpers.select.back_to_top'), books_path %><br>
 <% if @user %>
   <%= link_to "フォロー数:#{@user.following.count}" , following_users_url %><br>
-  <%= link_to "フォロワー数：#{@user.followers.count}", followers_users_url %><br>
+  <%= link_to "フォロワー数:#{@user.followers.count}", followers_users_url %><br>
   <p>
-    <strong><%= t('helpers.user_column.username') %>:</strong>
+    <strong><%= User.human_attribute_name(:username) %>:</strong>
     <%= @user.username %>
   </p>
 
   <p>
-    <strong><%= t('helpers.user_column.iconimage') %>:</strong>
-    <%= image_tag @user.image, :size =>'150x150' if @user.image.attached? %>
+    <strong><%= User.human_attribute_name(:image) %>:</strong>
+    <%= image_tag @user.image, size: '150x150' if @user.image.attached? %>
   </p>
 
-  <p>
-    <strong><%= t('helpers.user_column.mail') %>:</strong>
-    <%= @user.email %>
-  </p>
+  <% if @user == current_user %>
+    <p>
+      <strong><%= User.human_attribute_name(:email) %>:</strong>
+      <%= @user.email %>
+    </p>
+
+    <p>
+      <strong><%= User.human_attribute_name(:postcode) %>:</strong>
+      <%= @user.postcode %>
+    </p>
+
+    <p>
+      <strong><%= User.human_attribute_name(:address) %>:</strong>
+      <%= @user.address %>
+    </p>
+  <% end %>
 
   <p>
-    <strong><%= t('helpers.user_column.postcode') %>:</strong>
-    <%= @user.postcode %>
-  </p>
-
-  <p>
-    <strong><%= t('helpers.user_column.address') %>:</strong>
-    <%= @user.address %>
-  </p>
-
-  <p>
-    <strong><%= t('helpers.user_column.introduction') %>：</strong>
+    <strong><%= User.human_attribute_name(:introduction) %>：</strong>
     <%= @user.introduction %>
   </p>
   <% unless @books.empty? %>
     <p>これまでの投稿一覧</p>
-    <table>
-      <thead>
-        <tr>
-          <th><%= t('helpers.column.Title') %></th>
-          <th><%= t('helpers.column.Memo') %></th>
-          <th><%= t('helpers.column.Author') %></th>
-          <th>画像</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @books.each do |book| %>
-          <tr>
-            <td><%= book.title %></td>
-            <td><%= book.memo %></td>
-            <td><%= book.author %></td>
-            <td><%= image_tag book.picture_url, :size => '50x50' if book.picture_url.present? %></td>
-            <td><%= book.user_id %></td>
-            <td><%= link_to t('helpers.select.Show'), book %></td>
-            <td><%= link_to t('helpers.select.Edit'), edit_book_path(book) %></td>
-            <td><%= link_to t('helpers.select.Destroy'), book, method: :delete, data: { confirm: t('messages.sure?') } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render 'books/table', books: @books %>
   <% end %>
 <% else %>
   <p><%= t('messages.no_user') %></p>

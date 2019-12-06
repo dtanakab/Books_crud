@@ -1,5 +1,30 @@
 ---
 ja:
+  activerecord:
+    models:
+      book: 本
+      user: ユーザー
+    attributes:
+      book:
+        title: 本のタイトル
+        memo: メモ
+        picture: 画像
+        author: 著者
+      user:
+        image: アイコン画像
+        username: ユーザーネーム
+        introduction: 自己紹介
+        email: メールアドレス
+        postcode: 郵便番号
+        address: 住所
+        password: パスワード
+        password_confirmation: パスワード(再確認のため)
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
   date:
     abbr_day_names:
     - 日

@@ -12,7 +12,11 @@ class UsersController < ApplicationController
     @books = @user.books if @user
   end
 
-  def following; end
+  def following
+    @users = current_user.following
+  end
 
-  def followers; end
+  def followers
+    @users = current_user.followers
+  end
 end
