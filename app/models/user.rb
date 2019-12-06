@@ -25,28 +25,27 @@ class User < ApplicationRecord
   end
 
   private
-
-  def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
-  end
-
-  def self.dummy_name(auth)
-    "name:#{auth.uid}-#{auth.provider}"
-  end
-
-  def image_attached?
-    image.attached?
-  end
-
-  def file_validation
-    if image.blob.byte_size > 1_000_000
-      file_raise_error
-    elsif !image.blob.content_type.starts_with?('image/')
-      file_raise_error
+    def self.dummy_email(auth)
+      "#{auth.uid}-#{auth.provider}@example.com"
     end
-  end
 
-  def file_raise_error
-    errors.add(:image)
-  end
+    def self.dummy_name(auth)
+      "name:#{auth.uid}-#{auth.provider}"
+    end
+
+    def image_attached?
+      image.attached?
+    end
+
+    def file_validation
+      if image.blob.byte_size > 1_000_000
+        file_raise_error
+      elsif !image.blob.content_type.starts_with?("image/")
+        file_raise_error
+      end
+    end
+
+    def file_raise_error
+      errors.add(:image)
+    end
 end
