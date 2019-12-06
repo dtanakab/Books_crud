@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     def require_login
       unless user_signed_in?
         flash[:notice] = t("messages.login_needed")
-        redirect_to books_url
+        redirect_to root_url
       end
     end
 
