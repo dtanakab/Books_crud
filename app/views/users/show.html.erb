@@ -1,7 +1,7 @@
 <%= link_to t('helpers.select.back_to_top'), books_path %><br>
 <% if @user %>
-  <%= link_to "フォロー数:#{@user.following.count}" , following_users_url %><br>
-  <%= link_to "フォロワー数:#{@user.followers.count}", followers_users_url %><br>
+  <%= link_to "フォロー数:#{@user.following.count}" , following_user_path(@user.id) %><br>
+  <%= link_to "フォロワー数:#{@user.followers.count}", followers_user_path(@user.id) %><br>
   <p>
     <strong><%= User.human_attribute_name(:username) %>:</strong>
     <%= @user.username %>

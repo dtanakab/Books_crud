@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users do
-    collection do
+    member do
       get :following, :followers
     end
   end

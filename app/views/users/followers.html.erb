@@ -1,2 +1,4 @@
+<%= link_to t('helpers.select.back_to_top'), books_path %>
 <%= link_to t('helpers.select.account_index'), users_path %>
-<%= render 'table', users: @users %>
+<p><%= @user.username %>をフォローしているユーザー一覧</p>
+<%= render 'table', users: @followers %>
