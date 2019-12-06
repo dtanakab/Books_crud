@@ -23,12 +23,11 @@ class User < ApplicationRecord
   end
 
   private
+    def self.dummy_email(auth)
+      "#{auth.uid}-#{auth.provider}@example.com"
+    end
 
-  def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
-  end
-
-  def self.dummy_name(auth)
-    "name:#{auth.uid}-#{auth.provider}"
-  end
+    def self.dummy_name(auth)
+      "name:#{auth.uid}-#{auth.provider}"
+    end
 end
