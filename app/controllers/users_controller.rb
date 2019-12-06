@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :login_required
 
   def index
-    @users = User.page(params[:page])
+    @users = User.all
   end
 
   def show

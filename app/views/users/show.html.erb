@@ -33,6 +33,17 @@
     <strong><%= User.human_attribute_name(:introduction) %>：</strong>
     <%= @user.introduction %>
   </p>
+  <% if current_user.following?(@user) %>
+    <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+        method: :delete) do |f| %>
+      <%= f.submit "Unfollow", class: "btn" %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.active_relationships.build) do |f| %>
+      <div><%= hidden_field_tag :followed_id, @user.id %></div>
+      <%= f.submit "Follow", class: "btn" %>
+    <% end %>
+  <% end %>
   <% unless @books.empty? %>
     <p>これまでの投稿一覧</p>
     <%= render 'books/table', books: @books %>

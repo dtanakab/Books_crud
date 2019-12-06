@@ -17,17 +17,22 @@
           <td><%= link_to user.username, user %></td>
           <td><%= user.introduction %></td>
         <% if current_user.following?(user) %>
-          <td><%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
-                  html: { method: :delete }, remote: true) do |f| %>
+          <td>
+            <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
+                method: :delete) do |f| %>
               <%= f.submit "Unfollow", class: "btn" %>
-              <% end %></td>
+            <% end %>
+          </td>
         <% else %>
-          <td><%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
-                <div><%= hidden_field_tag :followed_id, user.id %></div>
-                <%= f.submit "Follow", class: "btn" %>
-              <% end %></td>
+          <td>
+            <%= form_for(current_user.active_relationships.build) do |f| %>
+              <div><%= hidden_field_tag :followed_id, user.id %></div>
+              <%= f.submit "Follow", class: "btn" %>
+            <% end %>
+          </td>
+        <% end %>
+        </tr>
       <% end %>
-      </tr><% end %>
     </tbody>
   </table>
 <% end %>

@@ -8,6 +8,6 @@ class Users::SessionsController < Devise::SessionsController
 
   def after_sign_out_path_for(_resource_or_scope)
     flash[:notice] = t("messages.logout_successfully")
-    root_url
+    books_url
   end
 end
