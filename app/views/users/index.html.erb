@@ -1,2 +1,4 @@
-<%= link_to t('helpers.select.back_to_top'), books_path %>
-<%= render 'table', users: @users %>
+<h1><%= t('helpers.select.account_index', terms: "") %></h1><br>
+<%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %>
+<hr>
+<%= render 'users/shared/table', users: @users %>

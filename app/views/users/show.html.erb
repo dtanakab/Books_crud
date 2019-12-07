@@ -1,7 +1,5 @@
-<%= link_to t('helpers.select.back_to_top'), books_path %><br>
 <% if @user %>
-  <%= link_to "フォロー数:#{@user.following.count}" , following_user_path(@user.id) %><br>
-  <%= link_to "フォロワー数:#{@user.followers.count}", followers_user_path(@user.id) %><br>
+  <%= render 'users/shared/header', user: @user %>
   <p>
     <strong><%= User.human_attribute_name(:username) %>:</strong>
     <%= @user.username %>
@@ -12,42 +10,14 @@
     <%= image_tag @user.image, size: '150x150' if @user.image.attached? %>
   </p>
 
-  <% if @user == current_user %>
-    <p>
-      <strong><%= User.human_attribute_name(:email) %>:</strong>
-      <%= @user.email %>
-    </p>
-
-    <p>
-      <strong><%= User.human_attribute_name(:postcode) %>:</strong>
-      <%= @user.postcode %>
-    </p>
-
-    <p>
-      <strong><%= User.human_attribute_name(:address) %>:</strong>
-      <%= @user.address %>
-    </p>
-  <% end %>
-
   <p>
     <strong><%= User.human_attribute_name(:introduction) %>：</strong>
     <%= @user.introduction %>
   </p>
-  <% if current_user.following?(@user) %>
-    <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
-        method: :delete) do |f| %>
-      <%= f.submit "Unfollow", class: "btn" %>
-    <% end %>
-  <% else %>
-    <%= form_for(current_user.active_relationships.build) do |f| %>
-      <div><%= hidden_field_tag :followed_id, @user.id %></div>
-      <%= f.submit "Follow", class: "btn" %>
-    <% end %>
-  <% end %>
-  <% unless @books.empty? %>
-    <p>これまでの投稿一覧</p>
-    <%= render 'books/table', books: @books %>
-  <% end %>
+
+  <hr>
+  <%= render 'users/shared/item_table', posts: @posts %><br>
 <% else %>
-  <p><%= t('messages.no_user') %></p>
+  <%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %><br>
+  <h3><%= t('messages.no_user') %></h3>
 <% end %>
