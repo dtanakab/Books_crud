@@ -8,8 +8,12 @@
 -%>
 <%= paginator.render do -%>
   <nav class="pagination" role="navigation" aria-label="pager">
+<<<<<<< HEAD
     <%= first_page_tag unless current_page.first? %>
     <%= prev_page_tag unless current_page.first? %>
+=======
+    <%= first_page_tag unless current_page.first? %><%= prev_page_tag unless current_page.first? %>
+>>>>>>> b60f7fd805c73a02ed29b4281807126afe5b4902
     <% each_page do |page| -%>
       <% if page.display_tag? -%>
         <%= page_tag page %>

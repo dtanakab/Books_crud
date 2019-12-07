@@ -17,7 +17,11 @@
 
 <p>
   <strong><%= Book.human_attribute_name(:picture) %></strong>
+<<<<<<< HEAD
   <%= image_tag @book.picture_url, size:'200x200' if @book.picture.present? %>
+=======
+  <%= image_tag(@book.picture_url, size:'200x200') if @book.picture.present? %>
+>>>>>>> b60f7fd805c73a02ed29b4281807126afe5b4902
 </p>
 
 <%= link_to t('helpers.select.Edit'), edit_book_path(@book) %> |
