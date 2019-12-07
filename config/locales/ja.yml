@@ -3,17 +3,13 @@ ja:
   activerecord:
     models:
       book: 本
-<<<<<<< HEAD
       user: ユーザー
-=======
->>>>>>> b60f7fd805c73a02ed29b4281807126afe5b4902
     attributes:
       book:
         title: 本のタイトル
         memo: メモ
         picture: 画像
         author: 著者
-<<<<<<< HEAD
       user:
         username: ユーザーネーム
         email: メールアドレス
@@ -21,8 +17,6 @@ ja:
         address: 住所
         image: アイコン画像
         introduction: 自己紹介
-=======
->>>>>>> b60f7fd805c73a02ed29b4281807126afe5b4902
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -162,24 +156,18 @@ ja:
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
     select:
-<<<<<<< HEAD
       back_to_top: トップページに戻る
-=======
->>>>>>> b60f7fd805c73a02ed29b4281807126afe5b4902
       prompt: 選択してください
       Show: 詳細
       Edit: 編集
       Destroy: 削除
       New Book: 新規登録
       Back: 戻る
-<<<<<<< HEAD
       logout: ログアウト
       login: ログイン
       signup: 会員登録
       account_info: 会員登録情報
       account_index: 会員一覧
-=======
->>>>>>> b60f7fd805c73a02ed29b4281807126afe5b4902
     submit:
       create: 登録する
       submit: 保存する
@@ -191,7 +179,6 @@ ja:
       Memo: メモ
       Author: 著者
       Picture: 画像
-<<<<<<< HEAD
     user_column:
       username: ユーザーネーム
       mail: メールアドレス
@@ -201,8 +188,6 @@ ja:
       password: パスワード
       password_again: パスワード（確認のため）
       remember?: 次回以降メールアドレスとパスワードを記憶する
-=======
->>>>>>> b60f7fd805c73a02ed29b4281807126afe5b4902
   number:
     currency:
       format:
@@ -268,7 +253,6 @@ ja:
     updated: 編集されました
     destroyed: 削除されました
     sure?: 本当に削除しますか？
-<<<<<<< HEAD
     login_successfully: ログインできました
     logout_successfully: ログアウトできました
     sign_up_successfully: 会員登録が完了しました
@@ -276,8 +260,6 @@ ja:
     userself_only: ユーザー本人のみ確認できます
     no_user: 指定のユーザーは存在しません
     github_login: Githubでの会員登録・ログインが完了しました
-=======
->>>>>>> b60f7fd805c73a02ed29b4281807126afe5b4902
   views:
     pagination:
       first: "&laquo; 最初"
@@ -285,10 +267,7 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
-<<<<<<< HEAD
   devise:
     sessions:
       user: 
         signed_out: ログアウトできました
-=======
->>>>>>> b60f7fd805c73a02ed29b4281807126afe5b4902
