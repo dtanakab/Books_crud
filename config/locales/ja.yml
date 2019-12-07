@@ -4,6 +4,10 @@ ja:
     models:
       book: 本
       user: ユーザー
+      comment: コメント
+      report: レポート
+    models:
+      book: 本
     attributes:
       book:
         title: 本のタイトル
@@ -19,6 +23,13 @@ ja:
         address: 住所
         password: パスワード
         password_confirmation: パスワード(再確認のため)
+      comment:
+        content: コメント内容
+      report:
+        title : レポートタイトル
+        content : レポート内容
+        updated_at: 投稿/更新日時
+        created_at: 投稿/更新日時
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -163,29 +174,40 @@ ja:
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
     select:
-      back_to_top: トップページに戻る
+      app_title: Rails練習用アプリ
+      back_to: "%{page}に戻る"
       prompt: 選択してください
       Show: 詳細
       Edit: 編集
       Destroy: 削除
-      New Book: 新規登録
+      add_item: "%{item}を追加"
       Back: 戻る
       logout: ログアウト
       login: ログイン
       signup: ユーザー登録
-      account_info: ユーザー登録情報
-      account_index: ユーザー一覧
+      signup_omni: "%{omni}でユーザー登録"
+      login_omni: "%{omni}でログイン"
+      account_info: "%{username}アカウント情報"
+      account_index: "%{terms}ユーザー一覧"
+      New Book: 新規登録
+      Back: 戻る
     submit:
       create: 登録する
       submit: 保存する
       update: 更新する
     column:
       Books: 本のリスト
-      Editing Book: 編集する
+      Edit_item: "%{item}を編集する"
       Title: タイトル
       Memo: メモ
       Author: 著者
       Picture: 画像
+      impressions_of_book: "「%{book}」の感想"
+      report_title: レポート：%{title}
+      list_of_posts: 投稿一覧
+      followers_count: フォロワー数：%{num}
+      following_count: フォロー数：%{num}
+      category: カテゴリ
     user_column:
       username: ユーザーネーム
       mail: メールアドレス
@@ -258,7 +280,7 @@ ja:
     pm: 午後
   messages:
     created: 新規作成されました
-    updated: 編集されました
+    updated: 更新されました
     destroyed: 削除されました
     sure?: 本当に削除しますか？
     login_successfully: ログインできました
@@ -267,9 +289,11 @@ ja:
     login_needed: ログインが必要です
     userself_only: ユーザー本人のみ確認できます
     no_user: 指定のユーザーは存在しません
+    no_posts: まだ投稿がありません
     github_login: Githubでの会員登録・ログインが完了しました
     size_too_big: ファイルのサイズが大きすぎます
     not_image: 画像ファイルを指定してください
+    not_saved: があります。以下をご確認ください
   views:
     pagination:
       first: "&laquo; 最初"
