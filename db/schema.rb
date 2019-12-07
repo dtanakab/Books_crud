@@ -12,11 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_11_28_082936) do
-=======
-ActiveRecord::Schema.define(version: 2019_11_27_074625) do
->>>>>>> b60f7fd... Modify all files by rubocop
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "memo"
@@ -25,7 +21,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_074625) do
     t.string "picture"
     t.string "author"
   end
-<<<<<<< HEAD
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,6 +37,4 @@ ActiveRecord::Schema.define(version: 2019_11_27_074625) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-=======
->>>>>>> b60f7fd... Modify all files by rubocop
 end
