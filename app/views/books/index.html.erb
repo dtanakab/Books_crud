@@ -1,7 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= t('helpers.column.Books') %></h1><br>
-<%= link_to t('helpers.select.New Book'), new_book_path %><br><br>
+<% if user_signed_in? %>
+  <%= link_to t('helpers.select.account_info'), current_user %>
+  <%= link_to t('helpers.select.account_index'), users_path %>
+  <%= link_to t('helpers.select.logout'), destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to t('helpers.select.signup'), new_user_registration_path %>
+  <%= link_to t('helpers.select.login'), new_user_session_path %>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -29,3 +36,4 @@
 <br>
 <br>
 <%= paginate @books %>
+<%= link_to t('helpers.select.New Book'), new_book_path %><br><br>

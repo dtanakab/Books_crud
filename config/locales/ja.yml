@@ -148,12 +148,18 @@ ja:
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
     select:
+      back_to_top: トップページに戻る
       prompt: 選択してください
       Show: 詳細
       Edit: 編集
       Destroy: 削除
       New Book: 新規登録
       Back: 戻る
+      logout: ログアウト
+      login: ログイン
+      signup: 会員登録
+      account_info: 会員登録情報
+      account_index: 会員一覧
     submit:
       create: 登録する
       submit: 保存する
@@ -165,6 +171,15 @@ ja:
       Memo: メモ
       Author: 著者
       Picture: 画像
+    user_column:
+      username: ユーザーネーム
+      mail: メールアドレス
+      postcode: 郵便番号
+      address: 住所
+      introduction: 自己紹介
+      password: パスワード
+      password_again: パスワード（確認のため）
+      remember?: 次回以降メールアドレスとパスワードを記憶する
   number:
     currency:
       format:
@@ -230,6 +245,12 @@ ja:
     updated: 編集されました
     destroyed: 削除されました
     sure?: 本当に削除しますか？
+    login_successfully: ログインできました
+    logout_successfully: ログアウトできました
+    sign_up_successfully: 会員登録が完了しました
+    login_needed: ログインが必要です
+    userself_only: ユーザー本人のみ確認できます
+    no_user: 指定のユーザーは存在しません
   views:
     pagination:
       first: "&laquo; 最初"
