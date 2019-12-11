@@ -3,8 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th><%= t('helpers.user_column.username') %></th>
-      <th><%= t('helpers.user_column.introduction') %></th>
+      <th><%= User.human_attribute_name(:username) %></th>
+      <th><%= User.human_attribute_name(:introduction) %></th>
     </tr>
   </thead>
   <tbody>

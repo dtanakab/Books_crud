@@ -2,15 +2,13 @@
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  protect_from_forgery with: :exception
 
-  private
-    def login_required
-      redirect_to new_user_session_path unless user_signed_in?
-    end
+  helper_method :current_user, :logged_in?
 
   protected
     def configure_permitted_parameters
-      added_attrs = [:username, :postcode, :address, :postcode, :introduction]
+      added_attrs = %i[username postcode address postcode introduction]
       devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
       devise_parameter_sanitizer.permit(:sign_in, keys: added_attrs)
     end
