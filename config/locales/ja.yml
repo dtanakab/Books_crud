@@ -191,6 +191,11 @@ ja:
       account_index: "%{terms}ユーザー一覧"
       New Book: 新規登録
       Back: 戻る
+      logout: ログアウト
+      login: ログイン
+      signup: 会員登録
+      account_info: 会員登録情報
+      account_index: 会員一覧
     submit:
       create: 登録する
       submit: 保存する
@@ -202,12 +207,15 @@ ja:
       Memo: メモ
       Author: 著者
       Picture: 画像
+<<<<<<< HEAD
       impressions_of_book: "「%{book}」の感想"
       report_title: レポート：%{title}
       list_of_posts: 投稿一覧
       followers_count: フォロワー数：%{num}
       following_count: フォロー数：%{num}
       category: カテゴリ
+=======
+>>>>>>> master
     user_column:
       username: ユーザーネーム
       mail: メールアドレス
