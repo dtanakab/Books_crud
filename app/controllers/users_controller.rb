@@ -22,10 +22,6 @@ class UsersController < ApplicationController
     @followers = @user.followers
   end
 
-  def reports
-    @reports = @user.reports
-  end
-
   def top
     set_posts(current_user.following)
   end

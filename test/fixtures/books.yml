@@ -1,0 +1,8 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+comic:
+  title: MyString
+  memo: MyText
+  author: MyAuthor
+  user: user1
+  picture: <%= Rails.root.join('test', 'fixtures', 'images', 'sample.png') %>

@@ -1,0 +1,27 @@
+user1:
+  username: Taro
+  email: user1@gmail.com
+  postcode: 123456
+  address: Tokyo
+  introduction: Have a good day!
+  uid: 
+  provider: 
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+user2:
+  username: user2
+  email: user2@gmail.com
+  postcode: 234567
+  address: Tokyo
+  introduction: Have a good day!
+  uid: 
+  provider: 
+
+user_auth:
+  username: user_auth
+  email: user_auth@gmail.com
+  postcode: 123456
+  address: Tokyo
+  introduction: Have a good day!
+  uid: 123
+  provider: github
