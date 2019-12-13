@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get :top
     end
   end
-  resources :books, :reports, :comments
+  resources :books
   resources :users, only: %i[index show]
   resources :relationships, only: %i[create destroy]
 end

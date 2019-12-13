@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show following followers reports]
+  before_action :set_user, only: %i[show following followers]
 
   def index
     @users = User.all
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     if @user
-      set_posts(@user.id)
+      set_posts(@user)
       render "users/mypage" if @user == current_user
     end
   end
@@ -22,10 +22,6 @@ class UsersController < ApplicationController
     @followers = @user.followers
   end
 
-  def reports
-    @reports = @user.reports
-  end
-
   def top
     set_posts(current_user.following)
   end
@@ -36,7 +32,7 @@ class UsersController < ApplicationController
     end
 
     def set_posts(users)
-      posts = Book.where(user: users) + Report.where(user: users)
+      posts = Book.where(user: users)
       @posts = posts.sort_by { |post| post[:updated_at] }.reverse
     end
 end

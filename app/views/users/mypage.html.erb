@@ -5,11 +5,6 @@
 </p>
 
 <p>
-  <strong><%= User.human_attribute_name(:image) %>:</strong>
-  <%= image_tag @user.image, size: '150x150' if @user.image.attached? %>
-</p>
-
-<p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= @user.email %>
 </p>
@@ -39,7 +34,7 @@
       <tr>
         <th><%= t('helpers.column.category') %></th>
         <th><%= t('helpers.column.Title') %></th>
-        <th><%= Report.human_attribute_name(:updated_at) %></th>
+        <th><%= Book.human_attribute_name(:updated_at) %></th>
       </tr>
     </thead>
 
@@ -49,11 +44,7 @@
           <td><%= post.class %></td>
           <td><%= link_to post.title, post %></td>
           <td><%= l post.updated_at, format: :short %></td>
-          <% if post.class == Book %>
-            <td><%= link_to t('helpers.select.Edit'), edit_book_path(post.id) %> |</td>
-          <% else %>
-            <td><%= link_to t('helpers.select.Edit'), edit_report_path(post.id) %> |</td>
-          <% end %>
+          <td><%= link_to t('helpers.select.Edit'), edit_book_path(post.id) %></td>
           <td><%= link_to t('helpers.select.Destroy'), post, method: :delete, data: { confirm: t('messages.sure?') } %></td>
         </tr>
       <% end %>
@@ -61,5 +52,4 @@
   </table>
 <% end %>
 <hr>
-<%= link_to t('helpers.select.add_item', item: "本の感想"), new_book_path %> |
-<%= link_to t('helpers.select.add_item', item: "レポート"), new_report_path %>
+<%= link_to t('helpers.select.add_item', item: "本の感想"), new_book_path %>
