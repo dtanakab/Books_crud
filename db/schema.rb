@@ -11,7 +11,12 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20_191_209_022_326) do
+=======
+
+ActiveRecord::Schema.define(version: 20_191_203_015_443) do
+>>>>>>> master
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "memo"
