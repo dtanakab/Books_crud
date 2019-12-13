@@ -24,7 +24,7 @@
 
 <p>
   <strong><%= Book.human_attribute_name(:picture) %></strong>
-  <%= image_tag @book.picture_url, size: '200x200' if @book.picture.present? %>
+  <%= image_tag @book.picture_url, size:'200x200' if @book.picture.present? %>
 </p>
 <% if @book.user == current_user %>
   <%= link_to t('helpers.select.Edit'), edit_book_path(@book) %> |
