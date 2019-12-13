@@ -4,7 +4,6 @@
   <table>
     <thead>
       <tr>
-        <th><%= User.human_attribute_name(:image) %></th>
         <th><%= User.human_attribute_name(:username) %></th>
         <th><%= User.human_attribute_name(:introduction) %></th>
       </tr>
@@ -13,10 +12,8 @@
     <tbody>
       <% users.each do |user| %>
         <tr>
-          <td><%= image_tag user.image, :size =>'50x50' if user.image.attached? %></td>
           <td><%= link_to user.username, user %></td>
           <td><%= user.introduction %></td>
-          <td><%= render 'users/shared/follow', user: user %></td>
         </tr>
       <% end %>
     </tbody>

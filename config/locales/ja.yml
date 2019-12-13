@@ -299,9 +299,7 @@ ja:
     size_too_big: ファイルのサイズが大きすぎます
     not_image: 画像ファイルを指定してください
     not_saved: があります。以下をご確認ください
-    updated: 編集されました
-    destroyed: 削除されました
-    sure?: 本当に削除しますか？
+    created?: 作成しますか？
   views:
     pagination:
       first: "&laquo; 最初"
