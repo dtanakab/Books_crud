@@ -15,7 +15,7 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.build(report_params)
     if @report.save
-      redirect_to @report, notice: t('messages.created')
+      redirect_to @report, notice: t("messages.created")
     else
       render :new
     end
@@ -23,7 +23,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
-      redirect_to @report, notice: t('messages.updated')
+      redirect_to @report, notice: t("messages.updated")
     else
       render :edit
     end
@@ -31,23 +31,22 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-    redirect_to current_user, notice: t('messages.destroyed')
+    redirect_to current_user, notice: t("messages.destroyed")
   end
 
   private
-
-  def set_report
-    @report = Report.find(params[:id])
-  end
-
-  def report_params
-    params.require(:report).permit(:title, :content)
-  end
-
-  def identity_verification
-    if @report.user != current_user
-      flash[:notice] = t('messages.userself_only')
-      redirect_to root_path
+    def set_report
+      @report = Report.find(params[:id])
     end
-  end
+
+    def report_params
+      params.require(:report).permit(:title, :content)
+    end
+
+    def identity_verification
+      if @report.user != current_user
+        flash[:notice] = t("messages.userself_only")
+        redirect_to root_path
+      end
+    end
 end
