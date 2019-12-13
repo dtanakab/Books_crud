@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     end
 
     def set_posts(users)
-      posts = Book.where(user: users) + Report.where(user: users)
+      posts = Book.where(user: users)
       @posts = posts.sort_by { |post| post[:updated_at] }.reverse
     end
 end

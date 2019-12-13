@@ -32,8 +32,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    @comments = @book.comments
-    @comment = @book.comments.new
   end
 
   private

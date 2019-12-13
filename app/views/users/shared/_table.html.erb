@@ -16,7 +16,6 @@
           <td><%= image_tag user.image, :size =>'50x50' if user.image.attached? %></td>
           <td><%= link_to user.username, user %></td>
           <td><%= user.introduction %></td>
-          <td><%= render 'users/shared/follow', user: user %></td>
         </tr>
       <% end %>
     </tbody>

@@ -44,33 +44,6 @@ ActiveRecord::Schema.define(version: 20_191_209_022_326) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text "content"
-    t.integer "user_id"
-    t.string "commentable_type"
-    t.integer "commentable_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index %w[commentable_type commentable_id], name: "index_comments_on_commentable_type_and_commentable_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "reports", force: :cascade do |t|
-    t.text "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.string "title"
-    t.index ["user_id"], name: "index_reports_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -90,5 +63,4 @@ ActiveRecord::Schema.define(version: 20_191_209_022_326) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "users"
 end
