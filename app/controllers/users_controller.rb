@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show following followers reports]
+  before_action :set_user, only: [:show]
 
   def index
     @users = User.all
@@ -14,20 +14,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def following
-    @following = @user.following
-  end
-
-  def followers
-    @followers = @user.followers
-  end
-
-  def reports
-    @reports = @user.reports
-  end
-
   def top
-    set_posts(current_user.following)
+    set_posts(User.all)
   end
 
   private
