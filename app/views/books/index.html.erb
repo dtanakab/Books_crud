@@ -1,6 +1,10 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+  <%= notice %>
+</p>
 
-<h1><%= t('helpers.column.Books') %></h1><br>
+<h1>
+  <%= t('helpers.column.Books') %>
+</h1><br>
 <% if user_signed_in? %>
   <%= link_to t('helpers.select.account_info'), current_user %>
   <%= link_to t('helpers.select.account_index'), users_path %>
@@ -12,23 +16,45 @@
 <table>
   <thead>
     <tr>
-      <th><%= Book.human_attribute_name(:title) %></th>
-      <th><%= Book.human_attribute_name(:memo) %></th>
-      <th><%= Book.human_attribute_name(:author) %></th>
-      <th><%= Book.human_attribute_name(:picture) %></th>
+      <th>
+        <%= Book.human_attribute_name(:title) %>
+      </th>
+      <th>
+        <%= Book.human_attribute_name(:memo) %>
+      </th>
+      <th>
+        <%= Book.human_attribute_name(:author) %>
+      </th>
+      <th>
+        <%= Book.human_attribute_name(:picture) %>
+      </th>
     </tr>
   </thead>
 
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td><%= book.title %></td>
-        <td><%= book.memo %></td>
-        <td><%= book.author %></td>
-        <td><%= image_tag book.picture_url, size:'50x50' if book.picture.present? %></td>
-        <td><%= link_to t('helpers.select.Show'), book %></td>
-        <td><%= link_to t('helpers.select.Edit'), edit_book_path(book) %></td>
-        <td><%= link_to t('helpers.select.Destroy'), book, method: :delete, data: { confirm: t('messages.sure?') } %></td>
+        <td>
+          <%= book.title %>
+        </td>
+        <td>
+          <%= book.memo %>
+        </td>
+        <td>
+          <%= book.author %>
+        </td>
+        <td>
+          <%= image_tag book.picture_url, size:'50x50' if book.picture.present? %>
+        </td>
+        <td>
+          <%= link_to t('helpers.select.Show'), book %>
+        </td>
+        <td>
+          <%= link_to t('helpers.select.Edit'), edit_book_path(book) %>
+        </td>
+        <td>
+          <%= link_to t('helpers.select.Destroy'), book, method: :delete, data: { confirm: t('messages.sure?') } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
