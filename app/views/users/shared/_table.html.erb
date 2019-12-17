@@ -1,20 +1,32 @@
 <% if users.empty? %>
-  <h3><%= t('messages.no_user') %></h3>
+  <h3>
+    <%= t('messages.no_user') %>
+  </h3>
 <% else %>
   <table>
     <thead>
       <tr>
-        <th><%= User.human_attribute_name(:username) %></th>
-        <th><%= User.human_attribute_name(:introduction) %></th>
+        <th>
+          <%= User.human_attribute_name(:username) %>
+        </th>
+        <th>
+          <%= User.human_attribute_name(:introduction) %>
+        </th>
       </tr>
     </thead>
 
     <tbody>
       <% users.each do |user| %>
         <tr>
-          <td><%= link_to user.username, user %></td>
-          <td><%= user.introduction %></td>
-          <td><%= render 'users/shared/follow', user: user %></td>
+          <td>
+            <%= link_to user.username, user %>
+          </td>
+          <td>
+            <%= user.introduction %>
+          </td>
+          <td>
+            <%= render 'users/shared/follow', user: user %>
+          </td>
         </tr>
       <% end %>
     </tbody>

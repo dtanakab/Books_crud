@@ -1,5 +1,9 @@
-<p id="notice"><%= flash[:notice] %></p>
-<h1><%= t('helpers.select.login') %></h1>
+<p id="notice">
+  <%= flash[:notice] %>
+</p>
+<h1>
+  <%= t('helpers.select.login') %>
+</h1>
 
 <%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %> |
 <%= link_to t('helpers.select.login_omni', omni: "Github"), user_github_omniauth_authorize_path %> |

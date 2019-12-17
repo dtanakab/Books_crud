@@ -2,6 +2,6 @@
   <%= t('helpers.select.account_index', terms: "#{@user.username}がフォロー中") %>
 </h1><br>
 <%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %>
-<%= link_to t('helpers.select.back_to', page: "アカウントページ"), user_path(params[:id]) %>
+<%= link_to t('helpers.select.back_to', page: "#{@user.username}のアカウントページ"), user_path(params[:user_id]) %>
 <hr>
 <%= render 'users/shared/table', users: @following %>
