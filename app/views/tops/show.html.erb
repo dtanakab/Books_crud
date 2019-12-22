@@ -5,6 +5,7 @@
 <h1>
   <%= t('helpers.select.app_title') %>
 </h1><br>
+<h2>変更しました！</h2>
 <% if user_signed_in? %>
   <%= link_to t('helpers.select.account_info', username:""), current_user %> |
   <%= link_to t('helpers.select.account_index', terms: ""), users_path %> |

@@ -41,6 +41,11 @@ group :development do
   gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "rubocop", require: false
+  gem "capistrano", "~> 3.11", require: false
+  gem "capistrano-bundler"
+  gem "capistrano-rails"
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
