@@ -44,8 +44,10 @@ group :development do
   gem "capistrano", "~> 3.11", require: false
   gem "capistrano-bundler"
   gem "capistrano-rails"
-  gem 'ed25519'
-  gem 'bcrypt_pbkdf'
+  gem "ed25519"
+  gem "bcrypt_pbkdf"
+  gem "capistrano-rbenv"
+  gem "capistrano3-puma"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
