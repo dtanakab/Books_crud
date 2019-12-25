@@ -1,12 +1,23 @@
 <% if @user %>
   <%= render 'users/shared/header', user: @user %>
   <p>
-    <strong><%= User.human_attribute_name(:username) %>:</strong>
+    <strong>
+      <%= User.human_attribute_name(:username) %>:
+    </strong>
     <%= @user.username %>
   </p>
 
   <p>
-    <strong><%= User.human_attribute_name(:introduction) %>：</strong>
+    <strong>
+      <%= User.human_attribute_name(:image) %>:
+    </strong>
+    <%= image_tag @user.image, size: '150x150' if @user.image.attached? %>
+  </p>
+
+  <p>
+    <strong>
+      <%= User.human_attribute_name(:introduction) %>：
+    </strong>
     <%= @user.introduction %>
   </p>
 
@@ -14,5 +25,7 @@
   <%= render 'users/shared/item_table', posts: @posts %><br>
 <% else %>
   <%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %><br>
-  <h3><%= t('messages.no_user') %></h3>
+  <h3>
+    <%= t('messages.no_user') %>
+  </h3>
 <% end %>

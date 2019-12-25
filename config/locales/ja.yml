@@ -6,8 +6,6 @@ ja:
       user: ユーザー
       comment: コメント
       report: レポート
-    models:
-      book: 本
     attributes:
       book:
         title: 本のタイトル
@@ -310,3 +308,10 @@ ja:
     sessions:
       user: 
         signed_out: ログアウトできました
+  devises:
+    registrations:
+      signed_up: "会員登録が完了しました"
+    sessions:
+      signed_in: "ログインできました"
+      signed_out: "ログアウトしました"
+      already_signed_out: "ログアウトされています"

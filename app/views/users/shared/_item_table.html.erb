@@ -1,23 +1,43 @@
-<h2><%= t('helpers.column.list_of_posts') %></h2>
+<h2>
+  <%= t('helpers.column.list_of_posts') %>
+</h2>
 <% if posts.empty? %>
-  <h3><%= t('messages.no_posts') %></h3>
+  <h3>
+    <%= t('messages.no_posts') %>
+  </h3>
 <% else %>
   <table>
     <thead>
       <tr>
-        <th><%= t('helpers.column.category') %></th>
-        <th><%= t('helpers.column.Title') %></th>
-        <th><%= Book.human_attribute_name(:updated_at) %></th>
-        <th><%= User.human_attribute_name(:username) %></th>
+        <th>
+          <%= t('helpers.column.category') %>
+        </th>
+        <th>
+          <%= t('helpers.column.Title') %>
+        </th>
+        <th>
+          <%= Book.human_attribute_name(:updated_at) %>
+        </th>
+        <th>
+          <%= User.human_attribute_name(:username) %>
+        </th>
       </tr>
     </thead>
     <tbody>
       <% posts.each do |post| %>
         <tr>
-          <td><%= post.class %></td>
-          <td><%= link_to post.title, post %></td>
-          <td><%= l post.updated_at, format: :short %></td>
-          <td><%= link_to post.user.username, post.user %></td>
+          <td>
+            <%= post.class %>
+          </td>
+          <td>
+            <%= link_to post.title, post %>
+          </td>
+          <td>
+            <%= l post.updated_at, format: :short %>
+          </td>
+          <td>
+            <%= link_to post.user.username, post.user %>
+          </td>
         </tr>
       <% end %>
     </tbody>

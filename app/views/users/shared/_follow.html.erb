@@ -1,0 +1,11 @@
+<% if current_user.following?(user) %>
+  <%= form_for(current_user.active_follows.find_by(followed_id: user.id), 
+      method: :delete) do |f| %>
+    <%= f.submit "Unfollow", class: "btn" %>
+  <% end %>
+<% elsif user != current_user %>
+  <%= form_for(current_user.active_follows.build) do |f| %>
+    <%= hidden_field_tag :followed_id, user.id %></div>
+    <%= f.submit "Follow", class: "btn" %>
+  <% end %>
+<% end %>
