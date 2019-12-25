@@ -14,6 +14,8 @@ module Books
     config.load_defaults 6.0
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
+    config.time_zone = "Asia/Tokyo"
+    config.action_view.embed_authenticity_token_in_remote_forms = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

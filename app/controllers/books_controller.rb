@@ -2,17 +2,14 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
-
-  def index
-    @books = Book.page(params[:page])
-  end
+  before_action :identity_verification, only: %i[update destroy]
 
   def new
-    @book = Book.new
+    @book = current_user.books.build
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.build(book_params)
     if @book.save
       redirect_to @book, notice: t("messages.created")
     else
@@ -31,7 +28,10 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_url, notice: t("messages.destroyed")
+    redirect_to current_user, notice: t("messages.destroyed")
+  end
+
+  def show
   end
 
   private
@@ -41,5 +41,12 @@ class BooksController < ApplicationController
 
     def book_params
       params.require(:book).permit(:title, :memo, :author, :picture)
+    end
+
+    def identity_verification
+      if @book.user != current_user
+        flash[:notice] = t("messages.userself_only")
+        redirect_to root_path
+      end
     end
 end

@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('helpers.select.app_title') %></h1><br>
+<% if user_signed_in? %>
+  <%= link_to t('helpers.select.account_info', username:""), current_user %> |
+  <%= link_to t('helpers.select.account_index', terms: ""), users_path %> |
+  <%= link_to t('helpers.select.logout'), destroy_user_session_path, method: :delete %>
+  <hr>
+  <%= render 'users/shared/item_table', posts: @posts %>
+  <hr>
+  <%= link_to t('helpers.select.add_item', item: "本の感想"), new_book_path %>
+<% else %>
+  <%= link_to t('helpers.select.signup'), new_user_registration_path %>
+  <%= link_to t('helpers.select.login'), new_user_session_path %>
+<% end %>  
+<br>

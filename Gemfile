@@ -61,4 +61,3 @@ gem "kaminari"
 gem "kaminari-bootstrap"
 gem "omniauth"
 gem "omniauth-github"
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
