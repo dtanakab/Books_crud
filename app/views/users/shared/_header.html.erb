@@ -1,4 +1,11 @@
-<h1><%= t('helpers.select.account_info', username: user.username ) %></h1><br>
-<p id="notice"><%= notice %></p>
+<h1>
+  <%= t('helpers.select.account_info', username: user.username ) %>
+</h1><br>
+<p id="notice">
+  <%= notice %>
+</p>
 <%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %><br>
+<%= link_to t('helpers.column.following_count', num: user.following.count), user_following_path(user.id) %> |
+<%= link_to t('helpers.column.followers_count', num: user.followers.count), user_followers_path(user.id) %>
+<%= render 'users/shared/follow', user: user %>
 <hr>

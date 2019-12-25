@@ -1,5 +1,9 @@
-<p id="notice"><%= flash[:notice] %></p>
-<h1><%= t('helpers.select.signup') %></h1>
+<p id="notice">
+  <%= flash[:notice] %>
+</p>
+<h1>
+  <%= t('helpers.select.signup') %>
+</h1>
 
 <%= link_to t('helpers.select.back_to', page: "トップページ"), root_path %> |
 <%= link_to t('helpers.select.signup_omni', omni: "Github"), user_github_omniauth_authorize_path %> |
@@ -42,9 +46,9 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
