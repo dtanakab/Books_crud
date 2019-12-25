@@ -44,7 +44,7 @@
           <%= book.author %>
         </td>
         <td>
-          <%= image_tag book.picture_url, size:'50x50' if book.picture.present? %>
+          <%= image_tag "public/#{@book.picture_url}", size:'50x50' if book.picture.present? %>
         </td>
         <td>
           <%= link_to t('helpers.select.Show'), book %>

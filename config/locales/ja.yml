@@ -309,3 +309,11 @@ ja:
     sessions:
       user: 
         signed_out: ログアウトできました
+        signed_up: 会員登録できました
+        signed_in: ログインできました
+  devise:
+    registrations:
+      user:
+        signed_out: ログアウトできました
+        signed_up: 会員登録できました
+        signed_in: ログインできました
