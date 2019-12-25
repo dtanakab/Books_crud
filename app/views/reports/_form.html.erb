@@ -1,0 +1,16 @@
+<%= form_with(model: report, local: true) do |form| %>
+  <%= render 'form_parts/error_message', item: report %>  
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, cols: "40", rows: "30" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resource :following, only: %i[show]
     resource :followers, only: %i[show]
   end
-  resources :books
+  resources :books, :reports, :comments
   resources :follows, only: %i[create destroy]
   resource :tops, only: %i[show]
 end

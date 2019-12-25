@@ -17,6 +17,11 @@ class BooksController < ApplicationController
     end
   end
 
+  def show
+    @comments = @book.comments
+    @comment = @book.comments.new
+  end
+
   def update
     @book.update(book_params)
     if @book.update(book_params)

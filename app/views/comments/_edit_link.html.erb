@@ -1,0 +1,9 @@
+<% if comment.user == current_user %>
+  <td>
+    <%= link_to t('helpers.select.Edit'), edit_comment_path(comment) %>
+  </td>
+  <td>
+    <%= link_to t('helpers.select.Destroy'), comment_path(comment), 
+        method: :delete, data: { confirm: t('messages.sure?') } %>
+  </td>
+<% end %>

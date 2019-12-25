@@ -1,0 +1,22 @@
+<% unless comments.empty? %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= Comment.human_attribute_name(:content) %></th>
+        <th><%= User.human_attribute_name(:username) %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% comments.each do |comment| %>
+        <% if comment.content %>
+          <tr>
+            <td><%= comment.content %></td>
+            <td><%= link_to comment.user.username, comment.user %></td>
+            <%= render 'comments/edit_link', comment: comment %>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
