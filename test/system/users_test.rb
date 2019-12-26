@@ -6,10 +6,13 @@ class UsersTest < ApplicationSystemTestCase
   setup do
     @user = users(:user1)
     @other_user = users(:user2)
+    login_as(@user)
   end
 
   test "creating a user" do
     assert_difference("User.count", 1) do
+      visit root_path
+      click_on "ログアウト"
       visit new_user_registration_path
       click_on "会員登録"
       fill_in "ユーザーネーム", with: "testusername"
@@ -21,11 +24,13 @@ class UsersTest < ApplicationSystemTestCase
       fill_in "パスワード", with: "password"
       fill_in "パスワード(再確認のため)", with: "password"
       click_button "会員登録"
-      assert_text "会員登録できました"
     end
+    assert_text "会員登録が完了しました"
   end
 
   test "sign in user" do
+    visit root_path
+    click_on "ログアウト"
     visit new_user_session_path
     fill_in "メールアドレス", with: @user.email
     fill_in "パスワード", with: "password"
@@ -34,7 +39,6 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "sign out user" do
-    login_as(@user)
     visit root_path
     click_on "ログアウト"
     visit root_path
@@ -42,39 +46,31 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "show toppage" do
-    login_as(@user)
     visit root_path
     assert_text "Rails練習用アプリ"
   end
 
   test "show mypage" do
-    login_as(@user)
     visit user_path(@user.id)
     assert_text @user.address
-    click_on "トップページに戻る"
   end
 
   test "show user index and check show other user page" do
-    login_as(@user)
     visit root_path
     click_on "会員一覧"
     assert_text "会員一覧"
     click_on @other_user.username
     assert_text @other_user.username
-    click_on "トップページに戻る"
   end
 
   test "show other user's follower" do
-    login_as(@user)
     visit user_path(@other_user.id)
     click_button "Follow"
     click_on "フォロワー数：1"
     assert_text @user.username
-    click_on "トップページに戻る"
   end
 
   test "show user's following" do
-    login_as(@user)
     visit user_path(@other_user.id)
     click_button "Follow"
     visit user_path(@user.id)

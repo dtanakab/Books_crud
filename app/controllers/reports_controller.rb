@@ -21,6 +21,11 @@ class ReportsController < ApplicationController
     end
   end
 
+  def show
+    @comments = @report.comments
+    @comment = @report.comments.new
+  end
+
   def update
     if @report.update(report_params)
       redirect_to @report, notice: t("messages.updated")

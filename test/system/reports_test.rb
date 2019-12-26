@@ -18,13 +18,11 @@ class ReportsTest < ApplicationSystemTestCase
       click_button "登録する"
     end
     assert_text "新規作成されました"
-    click_on "トップページに戻る"
   end
 
   test "show a report" do
     visit report_path(@report.id)
     assert_text "レポート：Myreport"
-    click_on "トップページに戻る"
   end
 
   test "update a report" do
@@ -37,12 +35,10 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test "delete a report" do
-    assert_difference("Report.count", -1) do
-      visit report_path(@report.id)
-      click_on "削除"
-      page.driver.browser.switch_to.alert.accept
-      assert_text "削除されました"
-      click_on "トップページに戻る"
-    end
+    visit report_path(@report.id)
+    click_on "削除"
+    page.driver.browser.switch_to.alert.accept
+    assert_text "削除されました"
+    assert_nil(Report.find_by(id: @report.id))
   end
 end

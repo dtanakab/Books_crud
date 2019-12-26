@@ -4,4 +4,3 @@ voice:
   content: Mycomment
   user: user2
   commentable_type: Book
-  commentable_id: comic.id

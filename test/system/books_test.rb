@@ -21,13 +21,11 @@ class BooksTest < ApplicationSystemTestCase
       click_button "登録する"
     end
     assert_text "新規作成されました"
-    click_on "トップページに戻る"
   end
 
   test "show a Book" do
     visit book_path(@book.id)
     assert_text "「MyString」の感想"
-    click_on "トップページに戻る"
   end
 
   test "update a Book" do
@@ -42,12 +40,10 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test "delete a Book" do
-    assert_difference("Book.count", -1) do
-      visit book_path(@book.id)
-      click_on "削除"
-      page.driver.browser.switch_to.alert.accept
-      assert_text "削除されました"
-      click_on "トップページに戻る"
-    end
+    visit book_path(@book.id)
+    click_on "削除"
+    page.driver.browser.switch_to.alert.accept
+    assert_text "削除されました"
+    assert_nil(Book.find_by(id: @book.id))
   end
 end

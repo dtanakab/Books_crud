@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[show edit update destroy]
+  before_action :set_comment, only: %i[edit update destroy]
 
   def create
     @comment = current_user.comments.new(comment_params)
     redirect_to @comment.commentable, notice: t("messages.created") if @comment.save
-  end
-
-  def edit
-    @comment = Comment.find(params[:id])
   end
 
   def update

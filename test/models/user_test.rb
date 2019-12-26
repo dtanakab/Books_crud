@@ -38,15 +38,15 @@ class UserTest < ActiveSupport::TestCase
     assert_equal(@followed_user, @user.following.first)
   end
 
-  test "create record of active_relationship" do
+  test "create record of active_follow" do
     @user.follow(@followed_user)
-    assert Relationship.find_by(followed_id: @followed_user.id)
+    assert Follow.find_by(followed_id: @followed_user.id)
   end
 
-  test "destroy record of active_relationship" do
+  test "destroy record of active_follow" do
     @user.follow(@followed_user)
     @user.unfollow(@followed_user)
-    assert_nil(Relationship.find_by(followed_id: @followed_user.id))
+    assert_nil(Follow.find_by(followed_id: @followed_user.id))
   end
 
   test "check user follow or not to following user" do

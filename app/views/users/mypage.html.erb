@@ -1,65 +1,90 @@
 <%= render 'users/shared/header', user: @user %>
 <p>
-  <strong><%= User.human_attribute_name(:username) %>:</strong>
+  <strong>
+    <%= User.human_attribute_name(:username) %>:
+  </strong>
   <%= @user.username %>
 </p>
 
 <p>
-  <strong><%= User.human_attribute_name(:image) %>:</strong>
-  <%= image_tag @user.image, size: '150x150' if @user.image.attached? %>
-</p>
-
-<p>
-  <strong><%= User.human_attribute_name(:email) %>:</strong>
+  <strong>
+    <%= User.human_attribute_name(:email) %>:
+  </strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong><%= User.human_attribute_name(:postcode) %>:</strong>
+  <strong>
+    <%= User.human_attribute_name(:postcode) %>:
+  </strong>
   <%= @user.postcode %>
 </p>
 
 <p>
-  <strong><%= User.human_attribute_name(:address) %>:</strong>
+  <strong>
+    <%= User.human_attribute_name(:address) %>:
+  </strong>
   <%= @user.address %>
 </p>
 
 <p>
-  <strong><%= User.human_attribute_name(:introduction) %>：</strong>
+  <strong>
+    <%= User.human_attribute_name(:introduction) %>：
+  </strong>
   <%= @user.introduction %>
 </p>
 
 <hr>
-<h2><%= t('helpers.column.list_of_posts') %></h2>
+<h2>
+  <%= t('helpers.column.list_of_posts') %>
+</h2>
 <% if @posts.empty? %>
-  <h3><%= t('messages.no_posts') %></h3>
+  <h3>
+    <%= t('messages.no_posts') %>
+  </h3>
 <% else %>
   <table>
     <thead>
       <tr>
-        <th><%= t('helpers.column.category') %></th>
-        <th><%= t('helpers.column.Title') %></th>
-        <th><%= Report.human_attribute_name(:updated_at) %></th>
+        <th>
+          <%= t('helpers.column.category') %>
+        </th>
+        <th>
+          <%= t('helpers.column.Title') %>
+        </th>
+        <th>
+          <%= Book.human_attribute_name(:updated_at) %>
+        </th>
       </tr>
     </thead>
 
     <tbody>
       <% @posts.each do |post| %>
         <tr>
-          <td><%= post.class %></td>
-          <td><%= link_to post.title, post %></td>
-          <td><%= l post.updated_at, format: :short %></td>
-          <% if post.class == Book %>
-            <td><%= link_to t('helpers.select.Edit'), edit_book_path(post.id) %> |</td>
-          <% else %>
-            <td><%= link_to t('helpers.select.Edit'), edit_report_path(post.id) %> |</td>
-          <% end %>
-          <td><%= link_to t('helpers.select.Destroy'), post, method: :delete, data: { confirm: t('messages.sure?') } %></td>
+          <td>
+            <%= post.class %>
+          </td>
+          <td>
+            <%= link_to post.title, post %>
+          </td>
+          <td>
+            <%= l post.updated_at, format: :short %>
+          </td>
+          <td>
+            <% if post.class == Book %>
+              <%= link_to t('helpers.select.Edit'), edit_book_path(post.id) %>
+            <% else %>
+              <%= link_to t('helpers.select.Edit'), edit_report_path(post.id) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to t('helpers.select.Destroy'), post, method: :delete, data: { confirm: t('messages.sure?') } %>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% end %>
 <hr>
-<%= link_to t('helpers.select.add_item', item: "本の感想"), new_book_path %> |
+<%= link_to t('helpers.select.add_item', item: "本の感想"), new_book_path %>
 <%= link_to t('helpers.select.add_item', item: "レポート"), new_report_path %>
