@@ -8,6 +8,9 @@ class CommentsController < ApplicationController
     redirect_to @comment.commentable, notice: t("messages.created") if @comment.save
   end
 
+  def edit
+  end
+
   def update
     @comment.update(comment_params)
     if @comment.update(comment_params)
