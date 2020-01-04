@@ -36,6 +36,11 @@ class BooksController < ApplicationController
     redirect_to current_user, notice: t("messages.destroyed")
   end
 
+  def show
+    @comments = @book.comments
+    @comment = @book.comments.new
+  end
+
   private
     def set_book
       @book = Book.find_by(id: params[:id])
