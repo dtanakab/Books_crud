@@ -4,12 +4,11 @@ Rails.application.routes.draw do
   root to: "tops#show"
   get "sessions/new"
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-  resources :users do
+  resources :users, only: %i[index show] do
     resource :following, only: %i[show]
     resource :followers, only: %i[show]
   end
-  resources :books
-  resources :users, only: %i[index show]
+  resources :books, :reports, :comments
   resources :follows, only: %i[create destroy]
   resource :tops, only: %i[show]
 end

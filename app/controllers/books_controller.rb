@@ -17,6 +17,11 @@ class BooksController < ApplicationController
     end
   end
 
+  def show
+    @comments = @book.comments
+    @comment = @book.comments.new
+  end
+
   def update
     @book.update(book_params)
     if @book.update(book_params)
@@ -29,6 +34,11 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to current_user, notice: t("messages.destroyed")
+  end
+
+  def show
+    @comments = @book.comments
+    @comment = @book.comments.new
   end
 
   private

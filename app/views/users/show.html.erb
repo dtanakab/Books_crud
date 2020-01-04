@@ -9,6 +9,13 @@
 
   <p>
     <strong>
+      <%= User.human_attribute_name(:image) %>:
+    </strong>
+    <%= image_tag @user.image, size: '150x150' if @user.image.attached? %>
+  </p>
+
+  <p>
+    <strong>
       <%= User.human_attribute_name(:introduction) %>：
     </strong>
     <%= @user.introduction %>

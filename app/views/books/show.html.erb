@@ -45,3 +45,6 @@
   <%= link_to t('helpers.select.Destroy'), @book, method: :delete, data: { confirm: t('messages.sure?') } %>
 <% end %>
 <br><hr>
+<%= render 'comments/index', comments: @comments %>
+<br><hr>
+<%= render 'comments/form', comment: @comment %>

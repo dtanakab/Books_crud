@@ -13,6 +13,7 @@
   <%= render 'users/shared/item_table', posts: @posts %>
   <hr>
   <%= link_to t('helpers.select.add_item', item: "本の感想"), new_book_path %>
+  <%= link_to t('helpers.select.add_item', item: "レポート"), new_report_path %>
 <% else %>
   <%= link_to t('helpers.select.signup'), new_user_registration_path %>
   <%= link_to t('helpers.select.login'), new_user_session_path %>

@@ -71,7 +71,11 @@
             <%= l post.updated_at, format: :short %>
           </td>
           <td>
-            <%= link_to t('helpers.select.Edit'), edit_book_path(post.id) %>
+            <% if post.class == Book %>
+              <%= link_to t('helpers.select.Edit'), edit_book_path(post.id) %>
+            <% else %>
+              <%= link_to t('helpers.select.Edit'), edit_report_path(post.id) %>
+            <% end %>
           </td>
           <td>
             <%= link_to t('helpers.select.Destroy'), post, method: :delete, data: { confirm: t('messages.sure?') } %>
@@ -83,3 +87,4 @@
 <% end %>
 <hr>
 <%= link_to t('helpers.select.add_item', item: "本の感想"), new_book_path %>
+<%= link_to t('helpers.select.add_item', item: "レポート"), new_report_path %>

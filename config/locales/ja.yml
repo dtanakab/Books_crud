@@ -6,8 +6,6 @@ ja:
       user: ユーザー
       comment: コメント
       report: レポート
-    models:
-      book: 本
     attributes:
       book:
         title: 本のタイトル
@@ -299,6 +297,7 @@ ja:
     size_too_big: ファイルのサイズが大きすぎます
     not_image: 画像ファイルを指定してください
     not_saved: があります。以下をご確認ください
+    created?: 作成しますか？
   views:
     pagination:
       first: "&laquo; 最初"
@@ -309,11 +308,10 @@ ja:
     sessions:
       user: 
         signed_out: ログアウトできました
-        signed_up: 会員登録できました
-        signed_in: ログインできました
   devise:
     registrations:
-      user:
-        signed_out: ログアウトできました
-        signed_up: 会員登録できました
-        signed_in: ログインできました
+      signed_up: "会員登録が完了しました"
+    sessions:
+      signed_in: "ログインできました"
+      signed_out: "ログアウトしました"
+      already_signed_out: "ログアウトされています"

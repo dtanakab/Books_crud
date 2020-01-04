@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     if @user
-      posts = Book.where(user: @user)
+      posts = Book.where(user: @user) + Report.where(user: @user)
       @posts = posts.sort_by { |post| post[:updated_at] }.reverse
       render "users/mypage" if @user == current_user
     end
