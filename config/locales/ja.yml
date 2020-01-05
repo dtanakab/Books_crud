@@ -44,7 +44,6 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
     - 1月
     - 2月
     - 3月
@@ -70,7 +69,6 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
     - 1月
     - 2月
     - 3月
@@ -310,8 +308,9 @@ ja:
         signed_out: ログアウトできました
   devise:
     registrations:
-      signed_up: "会員登録が完了しました"
+      signed_up: 会員登録が完了しました
+      already_signed_up: 会員登録されています
     sessions:
-      signed_in: "ログインできました"
-      signed_out: "ログアウトしました"
-      already_signed_out: "ログアウトされています"
+      signed_in: ログインできました
+      signed_out: ログアウトしました
+      already_signed_out: ログアウトされています
