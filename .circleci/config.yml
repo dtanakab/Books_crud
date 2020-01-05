@@ -1,83 +1,95 @@
-version: 2.1 # use CircleCI 2.1
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
-    parallelism: 3 # run three instances of this job in parallel
-    docker: # run the steps with Docker
-      - image: circleci/ruby:2.6.5-node-browsers-legacy # ...with this image as the primary container; this is where all `steps` will run
-        environment: # environment variables for primary container
+version: 2.1
+
+executors:
+  default:
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           PGHOST: 127.0.0.1
           PGUSER: circleci-demo-ruby
           RAILS_ENV: test
-      - image: circleci/postgres:11.5-alpine # database image
-        environment: # environment variables for database
+      - image: circleci/postgres:11.5-alpine
+        environment:
           POSTGRES_USER: circleci-demo-ruby
           POSTGRES_DB: db/test.sqlite3
           POSTGRES_PASSWORD: ""
-    steps: # a collection of executable commands
-      - checkout # special step to check out source code to working directory
+
+commands:
+  restore_gems:
+    steps:
       - run:
           name: install Bundler
-          command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            gem install bundler
-
-      # Which version of bundler?
-      - run:
-          name: Which bundler?
-          command: bundle -v
-
-      # Restore bundle cache
-      # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+          command: gem install bundler -v 2.1.2
       - restore_cache:
           keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-      - run: # Install Ruby dependencies
+            - gem-cache-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-{{ .Branch }}
+            - gem-cache
+      - run:
           name: Bundle Install
           command: bundle check --path vendor/bundle || bundle install --deployment
-
-      # Store bundle cache for Ruby dependencies
       - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
-      # Only necessary if app uses webpacker or yarn in some other way
+jobs:
+  build_and_test:
+    executor:
+      name: default
+    steps:
+      - setup_remote_docker:
+          reusable: true
+      - checkout
+      - restore_gems
       - restore_cache:
           keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
-
+            - yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-cache-{{ .Branch }}
+            - yarn-cache
       - run:
           name: Yarn Install
           command: yarn install --cache-folder ~/.cache/yarn
-
-      # Store yarn / webpacker cache
       - save_cache:
-          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          key: yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
-
       - run:
           name: Run Model Test
           command: bin/rails test test/models
-
       - run:
           name: Run System Test
           command: bin/rails test:system
-      # Save test results for timing analysis
-      - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+      - store_test_results:
           path: test_results
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
+  deploy:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_gems
+      - add_ssh_keys:
+          fingerprints:
+            - "3a:93:b4:ea:71:0a:e0:b5:c2:73:1e:3a:97:d3:27:5f"
+      - run:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
+
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - build_and_test
+      - deploy:
+          requires:
+            - build_and_test
+          filters:
+            branches:
+              only:
+                - master

@@ -7,7 +7,7 @@ set :application, "book_app"
 
 set :repo_url, "git@github.com:dtanakab/Books_crud.git"
 
-set :branch, "test_production"
+set :branch, "master"
 
 set :deploy_to, "/opt/book_app"
 
